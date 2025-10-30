@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { useFormState } from 'react-dom';
+import { useEffect, useRef, useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { createJournalEntry, type State } from '@/app/actions';
 import {
@@ -29,7 +28,7 @@ function SubmitButton() {
 
 export function JournalEntryForm() {
   const initialState: State = { message: null, errors: {} };
-  const [state, dispatch] = useFormState(createJournalEntry, initialState);
+  const [state, dispatch] = useActionState(createJournalEntry, initialState);
   const formRef = useRef<HTMLFormElement>(null);
   const { toast } = useToast();
 
